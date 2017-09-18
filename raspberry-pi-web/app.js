@@ -39,7 +39,6 @@ function indexController($scope, socket) {
   }];
 
   function prender(led) {
-    if (led.isChecked)
       socket.emit("turnOn", led);
   }
 }
