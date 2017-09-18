@@ -4,7 +4,7 @@ var app = angular
   .module("raspberry", []);
 
 app.factory('socket', ['$rootScope', function($rootScope) {
-  var socket = io.connect("http://localhost:8081");
+  var socket = io.connect("http://localhost:80");
 
   return {
     on: function(eventName, callback){
