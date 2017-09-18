@@ -41,4 +41,9 @@ function indexController($scope, socket) {
   function prender(led) {
       socket.emit("turnOn", led);
   }
+
+  socket.on("prender", function(led) {
+    vm.leds[led.id].isChecked = !vm.leds[led.id].isChecked;
+    $scope.$apply();
+  });
 }
