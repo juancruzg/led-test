@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="raspberry">
+  <head>
+    <meta charset="utf-8">
+    <title>Cortaste toda la luuuuz</title>
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body ng-controller="indexController as vm">
+    <div class="container">
+      <div style="height: 50px;"></div>
+      <div class="row">
+        <div class="col-lg-4 col-4" ng-repeat="led in vm.leds track by led.id">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" ng-model="led.isChecked" ng-click="vm.prender(led);">
+            <span class="custom-control-indicator"></span>
+            <div class="bulb" ng-class="{ {{led.color}}: led.isChecked }"><div class="diode"></div></div>
+          </label>
+        </div>
+      </div>
+      <div style="height: 400px;"></div>
+      <h1 style="font-size:70px;">PRENDEME LOS LEDS</h1>
+      <h2>Toque los leds para prenderlos tanto virtual como físicamente.</h2>
+    </div>
+  </body>
+  <script src="./lib/angular.min.js" charset="utf-8"></script>
+  <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+  <script src="app.js" charset="utf-8"></script>
+</html>

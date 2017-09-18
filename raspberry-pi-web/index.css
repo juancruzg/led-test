@@ -1,0 +1,115 @@
+.bulb {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    height: 200px;
+    background: #bbb;
+    border-radius:  50px 50px 2px 2px;
+}
+
+.bulb::before {
+  position: absolute;
+  background: #bbb;
+  content: "";
+  display: block;
+  width: 130px;
+  height: 40px;
+  top: 200px;
+  left: 50%;
+  margin-left: -65px;
+}
+
+.bulb::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 60px;
+  height: 300px;
+  margin: 0 auto;
+  top: 240px;
+  left: 50%;
+  margin-left: -30px;
+  border-right-color: black;
+  border-right-style: solid;
+  border-left-color: black;
+  border-left-style: solid;
+  -webkit-clip-path: polygon(0 0, 0 300px, 300px 30px, 400px 0);
+  clip-path: polygon(0 0, 0 300px, 300px 30px, 400px 0);
+}
+
+.bulb > .diode {
+  position: absolute;
+  display: block;
+  top: 100px;
+  width: 60px;
+  height: 80px;
+  background: #989898;
+  left: 50%;
+  margin-left: -30px;
+}
+
+.bulb > .diode::before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0px;
+  width: 1px;
+  height: 35px;
+  border-left-color: #bbb;
+  border-left-style: solid;
+  border-left-width: 9px;
+  left: 50%;
+  margin-left: -20px;
+  -webkit-transform: skewX(35deg);
+}
+
+.bulb > .diode::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 30px;
+  width: 30px;
+  height: 45px;
+  background: #bbb;
+  left: 65%;
+  margin-left: -15px;
+}
+
+.bulb.red, .bulb.red > .diode::after, .bulb.red::before {
+  background: #F85050;
+}
+
+.bulb.red > .diode::before {
+  border-color: #F85050;
+}
+
+.bulb.red > .diode {
+  background: #A02020;
+}
+
+.bulb.green, .bulb.green > .diode::after, .bulb.green::before {
+  background: #4DF983;
+}
+
+.bulb.green > .diode::before {
+  border-color: #4DF983;
+}
+
+.bulb.green > .diode {
+  background: #1A9A42;
+}
+
+h1, p {
+    color: #E8E8E8;
+    text-align: center;
+}
+
+h2 {
+  color: #898B8A;
+}
+
+body{
+    text-align: center;
+    background: #23263a;
+}
