@@ -23,7 +23,10 @@ indexController.$inject = [ "$scope", "socket" ];
 function indexController($scope, socket) {
   var vm = this;
 
+  vm.send = send;
   vm.prender = prender;
+  vm.messages = [];
+
   vm.leds = [{
     "id": 0,
     "color": "green",
@@ -38,12 +41,24 @@ function indexController($scope, socket) {
     "isChecked": false
   }];
 
-  function prender(led) {
-      socket.emit("turnOn", led);
+  function send() {
+    vm.message = vm.username + ": " + vm.message;
+    vm.messages.push(vm.message);
+    socket.emit("broadcast", { "eventName": "sendMessage", "data": vm.message });
+    vm.message = "";
   }
 
-  socket.on("prender", function(led) {
+  function prender(led) {
+    socket.emit("broadcast", { "eventName": "turnOn", "data": led });
+  }
+
+  socket.on("turnOn", function(led) {
     vm.leds[led.id].isChecked = !vm.leds[led.id].isChecked;
+    $scope.$apply();
+  });
+
+  socket.on("sendMessage", function(message) {
+    vm.messages.push(message);
     $scope.$apply();
   });
 }

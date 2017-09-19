@@ -10,8 +10,8 @@ app.use(express.static("raspberry-pi-web"));
 app.use(bodyParser.json())
 
 io.on("connection", socket => {
-  socket.on("turnOn", x => {
-    socket.broadcast.emit("prender", x);
+  socket.on("broadcast", x => {
+    socket.broadcast.emit(x.eventName, x.data);
   });
 });
 

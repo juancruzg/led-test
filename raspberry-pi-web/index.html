@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./index.css">
   </head>
   <body ng-controller="indexController as vm">
-    <div class="container">
+    <div class="container h-100 d-flex flex-column">
       <div style="height: 50px;"></div>
       <div class="row">
         <div class="col-lg-4 col-4" ng-repeat="led in vm.leds track by led.id">
@@ -21,6 +21,25 @@
       <div style="height: 400px;"></div>
       <h1 style="font-size:70px;">PRENDEME LOS LEDS</h1>
       <h2>Toque los leds para prenderlos tanto virtual como físicamente.</h2>
+
+
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="message in vm.messages track by $index">{{message}}</li>
+      </ul>
+
+      <form ng-submit="vm.send();">
+        <div class="row row-eq-height" style="background-color: #e6e6e6;">
+          <div class="col-lg-3 offset-lg-1">
+              <input type="text" class="form-control" value="" ng-model="vm.username" placeholder="Quién sos?">
+          </div>
+          <div class="col-lg-7">
+              <input type="text" class="form-control" value="" ng-model="vm.message" placeholder="Escribí algo">
+          </div>
+          <div class="col-lg-1">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
   <script src="./lib/angular.min.js" charset="utf-8"></script>
